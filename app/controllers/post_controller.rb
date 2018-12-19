@@ -1,5 +1,6 @@
 class PostController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :create]
+  skip_before_action :verify_authenticity_token
   def index
     @posts = Post.all
   end
@@ -9,43 +10,37 @@ class PostController < ApplicationController
   end
   
   def create
-    @post = current_user.posts.build(post_params)
-    if @post.save
-      flash[:notice] = "Post successfully created"
-      redirect_to root_path
-    else
-      flash[:error] = "Post has error"
-      render 'new'
-    end  
+    @userp = User.find_by(Login: session[:current_user_id])
+    @post = @userp.userparam.posts.build(post_params)
+    @image_src = File.join(Rails.root, "Score.png")
+    @src_file = File.new(@image_src)
+    @post.avatar = @src_file
+    @post.save
+     
   end
   
   def show
-    render index
+    
   end
   
   def edit
   end
   
-  def update
-    if @post.update(post_params)
-      flash[:notice] = "Post successfully updated"
-      redirect_to post_path(@post.id)
-    else
-      flash[:error] = "Post has error"
-      render 'edit'
-    end
-    
+  def updated
   end
   
   def destroy
+    @post = find_post
+    if @post.present?
     @post.destroy
+    end
     redirect_to root_path
   end
   
 private
 
   def post_params
-    params.require(:post).permit(:user_id, :title, :body)
+    params.require(:post).permit(:user_id, :score, :avatar)
   end
   
   def find_post

@@ -1,15 +1,22 @@
-<%= link_to('Logout', destroy_user_session_path, method: :delete) %>    
+<% if user_signed_in? %>
+    <p><%= link_to 'Logout', destroy_user_session_path, method: :delete %></p>   
+ <% else %>
+ Go Sign_in/up
+ <p><%= link_to('Log_in', new_user_session_path)  %></p>
+ <p><%= link_to('Register', new_user_registration_path)  %></p>
+<% end %>  
 <% if @posts == [] %>
-
     <p>Nothing here</p>
 <% else %>
     <% @posts.each do |post| %>
-       <p>Username
-	     <% if !post.userparam.nil? %>
-       	<%= image_tag post.userparam.avatar.url(:small) %>
-	     <% end %>
-       	<b><%= post.userparam.Login %></b> write: <br />
-       <b><%= post.userparam.score %></b><br />
-       <p><%= link_to "Read More", post_path(post.id) %></p>
-    <% end %>
-<% end %>
+       <p>Username:
+       	<%=  image_tag post.avatar.url(:thumb)  %>
+       	<b><%= post.userparam.Login %></b><br />
+       <p>Score: <b><%= post.score %></b><br /></p>
+           <% if user_signed_in? %>
+              <% if post.user_id == current_user.id %>
+           <% end %>
+       <p><%= link_to "Delete", post_path(post.id), method: :delete %></p>
+              <% end %>
+ <% end %>
+  <% end %>

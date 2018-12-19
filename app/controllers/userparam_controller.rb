@@ -12,6 +12,7 @@ class UserparamController < ApplicationController
   def Find_User
     @userp = User.find_by(Login: user_params[:Login])
     if !@userp.nil?
+      session[:current_user_id] = @userp.Login
       render :json => {:Login => @userp.Login, :Password => @userp.password, :score => @userp.userparam.score, :Message => "You're entered"}
     else
      @userp = User.new
@@ -19,6 +20,7 @@ class UserparamController < ApplicationController
      @userp.password = user_params[:Password]
      @userp.userparam = Userparam.new(user_params)
      @userp.userparam.score = 0
+     session[:current_user_id] = @userp.Login
      @userp.save
      render :json => {:Login => @userp.Login, :score => @userp.userparam.score, :Message => "You're registered"}
     end
