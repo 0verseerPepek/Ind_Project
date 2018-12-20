@@ -3,6 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :authentication_keys => [:Login]
+         validates :Login, presence: true, uniqueness: true, length: {maximum: 50}
+         
+         
         def email_required?
           false
         end

@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-#For photo gallery
+#For photo 
 gem 'carrierwave', '~> 1.0'
 # For authentication solution
 gem 'devise'

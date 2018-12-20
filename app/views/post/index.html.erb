@@ -10,13 +10,13 @@
 <% else %>
     <% @posts.each do |post| %>
        <p>Username:
-       	<%=  image_tag post.avatar.url(:thumb)  %>
+       	<%=  image_tag post.avatar.url  %>
        	<b><%= post.userparam.Login %></b><br />
        <p>Score: <b><%= post.score %></b><br /></p>
            <% if user_signed_in? %>
-              <% if post.user_id == current_user.id %>
-           <% end %>
-       <p><%= link_to "Delete", post_path(post.id), method: :delete %></p>
+              <% if post.userparam.Login == current_user.Login %>
+                 <p><%= link_to "Delete", post_path(post.id), method: :delete %></p>
               <% end %>
+           <% end %>
  <% end %>
   <% end %>

@@ -11,12 +11,10 @@ class PostController < ApplicationController
   
   def create
     @userp = User.find_by(Login: session[:current_user_id])
+    params[:post][:avatar] = File.open(post_params[:avatar])
     @post = @userp.userparam.posts.build(post_params)
-    @image_src = File.join(Rails.root, "Score.png")
-    @src_file = File.new(@image_src)
-    @post.avatar = @src_file
-    @post.save
-     
+    @post.save 
+ 
   end
   
   def show

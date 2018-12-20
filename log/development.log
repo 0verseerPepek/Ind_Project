@@ -8431,3 +8431,2761 @@ app/uploaders/avatar_uploader.rb:4:in `<class:AvatarUploader>'
 app/uploaders/avatar_uploader.rb:1:in `<top (required)>'
 app/models/post.rb:2:in `<class:Post>'
 app/models/post.rb:1:in `<top (required)>'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 10:11:09 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  
+LoadError (cannot load such file -- mini_magick (You may need to install the mini_magick gem)):
+  
+app/uploaders/avatar_uploader.rb:4:in `include'
+app/uploaders/avatar_uploader.rb:4:in `<class:AvatarUploader>'
+app/uploaders/avatar_uploader.rb:1:in `<top (required)>'
+app/models/post.rb:2:in `<class:Post>'
+app/models/post.rb:1:in `<top (required)>'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 10:12:56 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (13.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.3ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:14
+Completed 500 Internal Server Error in 339ms (ActiveRecord: 17.7ms)
+
+
+  
+NoMethodError (undefined method `resize_to_fit' for #<AvatarUploader::Uploader61582780:0x00000000032aa398>):
+  
+app/controllers/post_controller.rb:17:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 10:20:13 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  
+LoadError (cannot load such file -- mini_magick (You may need to install the mini_magick gem)):
+  
+app/uploaders/avatar_uploader.rb:4:in `include'
+app/uploaders/avatar_uploader.rb:4:in `<class:AvatarUploader>'
+app/uploaders/avatar_uploader.rb:1:in `<top (required)>'
+app/models/post.rb:2:in `<class:Post>'
+app/models/post.rb:1:in `<top (required)>'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 10:28:44 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.4ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:18
+  [1m[36mUserparam Load (0.3ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/post_controller.rb:18
+No template found for PostController#create, rendering head :no_content
+Completed 204 No Content in 3590ms (ActiveRecord: 4.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 10:29:04 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (48.2ms)
+Completed 500 Internal Server Error in 357ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (Nil location provided. Can't build URI.):
+    10: <% else %>
+    11:     <% @posts.each do |post| %>
+    12:        <p>Username:
+    13:        	<%=  image_tag post.avatar.url(:thumb)  %>
+    14:        	<b><%= post.userparam.Login %></b><br />
+    15:        <p>Score: <b><%= post.score %></b><br /></p>
+    16:            <% if user_signed_in? %>
+  
+app/views/post/index.html.erb:13:in `block in _app_views_post_index_html_erb__48167587_68652020'
+app/views/post/index.html.erb:11:in `_app_views_post_index_html_erb__48167587_68652020'
+Started GET "/" for 127.0.0.1 at 2018-12-19 10:29:44 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.1ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:13
+  [1m[36mCACHE Userparam Load (0.0ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:13
+  Rendered post/index.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 1130ms (Views: 1116.1ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/post/8" for 127.0.0.1 at 2018-12-19 10:29:48 +0200
+Processing by PostController#destroy as HTML
+  Parameters: {"authenticity_token"=>"3p9UurMrKeLD4mhwyJNBnceDXW28GZmNKfUnzkBEK6dQksA0Pw9XW+5m5LuuKHX3yMhjRDxGyMwDNkJi1VR6ng==", "id"=>"8"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:47
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:35
+  [1m[36mPost Destroy (1.2ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 8]]
+  ↳ app/controllers/post_controller.rb:35
+  [1m[35m (156.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_controller.rb:35
+Redirected to http://localhost:3000/
+Completed 302 Found in 213ms (ActiveRecord: 158.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 10:29:48 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.1ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:13
+  Rendered post/index.html.erb within layouts/application (18.4ms)
+Completed 200 OK in 157ms (Views: 144.1ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/post/9" for 127.0.0.1 at 2018-12-19 10:29:49 +0200
+Processing by PostController#destroy as HTML
+  Parameters: {"authenticity_token"=>"riazmzdS1iwonWMlvx6YPe1XhYAGEdVYwEYUH6F4Op4gKycVu3aolQUZ7+7ZpaxX4hy7qYZOhBnqhXGzNGhrpw==", "id"=>"9"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:47
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:35
+  [1m[36mPost Destroy (2.5ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 9]]
+  ↳ app/controllers/post_controller.rb:35
+  [1m[35m (147.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_controller.rb:35
+Redirected to http://localhost:3000/
+Completed 302 Found in 161ms (ActiveRecord: 150.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 10:29:49 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 122ms (Views: 108.8ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-19 10:30:04 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:18
+  [1m[36mUserparam Load (0.3ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/post_controller.rb:18
+No template found for PostController#create, rendering head :no_content
+Completed 204 No Content in 3222ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 10:30:16 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 145ms (Views: 131.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 10:30:30 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 146ms (Views: 131.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 10:32:00 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 137ms (Views: 112.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-19 10:32:09 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.1ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:18
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/post_controller.rb:18
+No template found for PostController#create, rendering head :no_content
+Completed 204 No Content in 3221ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 10:32:49 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (14.1ms)
+Completed 200 OK in 134ms (Views: 121.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-19 10:33:33 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:18
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/post_controller.rb:18
+No template found for PostController#create, rendering head :no_content
+Completed 204 No Content in 3314ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 10:34:13 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 121ms (Views: 108.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-19 10:36:14 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>"Score.png"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.1ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:14
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.4ms)
+
+
+  
+CarrierWave::FormNotMultipart (You tried to assign a String or a Pathname to an uploader, for security reasons, this is not allowed.
+
+ If this is a file upload, please check that your upload form is multipart encoded.):
+  
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 10:38:34 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>"Score.png"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:17
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 3.0ms)
+
+
+  
+CarrierWave::FormNotMultipart (You tried to assign a String or a Pathname to an uploader, for security reasons, this is not allowed.
+
+ If this is a file upload, please check that your upload form is multipart encoded.):
+  
+app/controllers/post_controller.rb:17:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 10:38:50 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:18
+  [1m[36mUserparam Load (0.3ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:18
+  [1m[36mPost Create (1.5ms)[0m  [1m[32mINSERT INTO "posts" ("score", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["score", "100"], ["created_at", "2018-12-19 08:38:50.345656"], ["updated_at", "2018-12-19 08:38:50.345656"], ["user_id", 3]]
+  ↳ app/controllers/post_controller.rb:18
+  [1m[35m (198.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_controller.rb:18
+No template found for PostController#create, rendering head :no_content
+Completed 204 No Content in 3482ms (ActiveRecord: 200.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 10:39:14 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (18.3ms)
+Completed 500 Internal Server Error in 83ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (Nil location provided. Can't build URI.):
+    10: <% else %>
+    11:     <% @posts.each do |post| %>
+    12:        <p>Username:
+    13:        	<%=  image_tag post.avatar.url(:thumb)  %>
+    14:        	<b><%= post.userparam.Login %></b><br />
+    15:        <p>Score: <b><%= post.score %></b><br /></p>
+    16:            <% if user_signed_in? %>
+  
+app/views/post/index.html.erb:13:in `block in _app_views_post_index_html_erb__48167587_110144060'
+app/views/post/index.html.erb:11:in `_app_views_post_index_html_erb__48167587_110144060'
+Started GET "/" for 127.0.0.1 at 2018-12-19 10:39:43 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.1ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:13
+  Rendered post/index.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 126ms (Views: 111.9ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/post/10" for 127.0.0.1 at 2018-12-19 10:39:45 +0200
+Processing by PostController#destroy as HTML
+  Parameters: {"authenticity_token"=>"lie0XUDdNVVhtbjfzbjh+DTN93FYV6aRAZz4Wz3NXXMYKiDTzPlL7EwxNBSrA9WSO4bJWNgI99ArX533qN0MSg==", "id"=>"10"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:47
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:35
+  [1m[36mPost Destroy (2.5ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 10]]
+  ↳ app/controllers/post_controller.rb:35
+  [1m[35m (146.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_controller.rb:35
+Redirected to http://localhost:3000/
+Completed 302 Found in 223ms (ActiveRecord: 150.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 10:39:46 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 122ms (Views: 108.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 10:39:52 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 130ms (Views: 117.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 10:39:53 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 126ms (Views: 113.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-19 10:40:01 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.1ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:18
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:18
+  [1m[36mPost Create (2.6ms)[0m  [1m[32mINSERT INTO "posts" ("score", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["score", "100"], ["created_at", "2018-12-19 08:40:01.335558"], ["updated_at", "2018-12-19 08:40:01.335558"], ["user_id", 3]]
+  ↳ app/controllers/post_controller.rb:18
+  [1m[35m (163.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_controller.rb:18
+No template found for PostController#create, rendering head :no_content
+Completed 204 No Content in 3490ms (ActiveRecord: 167.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 10:40:04 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (16.9ms)
+Completed 500 Internal Server Error in 92ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (Nil location provided. Can't build URI.):
+    10: <% else %>
+    11:     <% @posts.each do |post| %>
+    12:        <p>Username:
+    13:        	<%=  image_tag post.avatar.url(:thumb)  %>
+    14:        	<b><%= post.userparam.Login %></b><br />
+    15:        <p>Score: <b><%= post.score %></b><br /></p>
+    16:            <% if user_signed_in? %>
+  
+app/views/post/index.html.erb:13:in `block in _app_views_post_index_html_erb__48167587_95556800'
+app/views/post/index.html.erb:11:in `_app_views_post_index_html_erb__48167587_95556800'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 10:46:02 +0200
+  
+SyntaxError (D:/RoR2/IndPrt/IndPr/app/controllers/post_controller.rb:50: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/post_controller.rb:50: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/create" for 127.0.0.1 at 2018-12-19 10:46:34 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:17
+No template found for PostController#create, rendering head :no_content
+Completed 204 No Content in 3136ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 10:46:59 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (27.6ms)
+Completed 500 Internal Server Error in 92ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (Nil location provided. Can't build URI.):
+    10: <% else %>
+    11:     <% @posts.each do |post| %>
+    12:        <p>Username:
+    13:        	<%=  image_tag post.avatar.url(:thumb)  %>
+    14:        	<b><%= post.userparam.Login %></b><br />
+    15:        <p>Score: <b><%= post.score %></b><br /></p>
+    16:            <% if user_signed_in? %>
+  
+app/views/post/index.html.erb:13:in `block in _app_views_post_index_html_erb__48167587_109591620'
+app/views/post/index.html.erb:11:in `_app_views_post_index_html_erb__48167587_109591620'
+Started GET "/" for 127.0.0.1 at 2018-12-19 10:47:09 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.3ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:13
+  Rendered post/index.html.erb within layouts/application (20.7ms)
+Completed 200 OK in 141ms (Views: 127.6ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/post/11" for 127.0.0.1 at 2018-12-19 10:47:12 +0200
+Processing by PostController#destroy as HTML
+  Parameters: {"authenticity_token"=>"RG9f2m1wfN4pByl75uw+I04yXyiBbfmFEquRXq4jrC7KYstU4VQCZwSDpbCAVwpJQXlhAQEyqMQ4aPTyOzP9Fw==", "id"=>"11"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:49
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:37
+  [1m[36mPost Destroy (2.6ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 11]]
+  ↳ app/controllers/post_controller.rb:37
+  [1m[35m (172.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_controller.rb:37
+Redirected to http://localhost:3000/
+Completed 302 Found in 252ms (ActiveRecord: 175.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 10:47:12 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (15.5ms)
+Completed 200 OK in 138ms (Views: 122.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-19 10:47:19 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.1ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:17
+No template found for PostController#create, rendering head :no_content
+Completed 204 No Content in 3060ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 10:47:26 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 126ms (Views: 113.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-19 10:48:27 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:17
+No template found for PostController#create, rendering head :no_content
+Completed 204 No Content in 3119ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 10:48:40 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 134ms (Views: 120.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-19 10:51:51 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 1.2ms)
+
+
+  
+NoMethodError (private method `open' called for #<String:0x0000000004110950>):
+  
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 10:53:33 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 1.1ms)
+
+
+  
+NoMethodError (private method `open' called for #<File:0x000000000cbf2500>):
+  
+app/controllers/post_controller.rb:15:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 10:55:45 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.1ms)
+
+
+  
+NoMethodError (private method `open' called for "/public/uploads/tmp/1545183309-6048-0001-9863/Score.png":String):
+  
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 10:58:39 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.2ms)
+
+
+  
+NoMethodError (private method `open' called for #<File:0x000000000d2d8720>):
+  
+app/controllers/post_controller.rb:16:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 10:59:13 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.2ms)
+
+
+  
+NoMethodError (private method `open' called for #<String:0x000000000d1ff7e0>):
+  
+app/controllers/post_controller.rb:15:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 11:02:43 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 1.1ms)
+
+
+  
+Errno::ENOENT (No such file or directory @ rb_sysopen - {@image_src}):
+  
+app/controllers/post_controller.rb:16:in `initialize'
+app/controllers/post_controller.rb:16:in `open'
+app/controllers/post_controller.rb:16:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 11:03:13 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.2ms)
+
+
+  
+Errno::ENOENT (No such file or directory @ rb_sysopen - {@image_src}):
+  
+app/controllers/post_controller.rb:16:in `initialize'
+app/controllers/post_controller.rb:16:in `open'
+app/controllers/post_controller.rb:16:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 11:03:29 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 1.3ms)
+
+
+  
+Errno::ENOENT (No such file or directory @ rb_sysopen - #{@image_src}):
+  
+app/controllers/post_controller.rb:16:in `initialize'
+app/controllers/post_controller.rb:16:in `open'
+app/controllers/post_controller.rb:16:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 11:04:23 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:17
+No template found for PostController#create, rendering head :no_content
+Completed 204 No Content in 3234ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 11:04:39 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 127ms (Views: 113.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 11:04:40 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 146ms (Views: 132.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 11:06:11 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 195ms (Views: 176.0ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-19 13:43:29 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.4ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:17
+No template found for PostController#create, rendering head :no_content
+Completed 204 No Content in 3333ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 13:44:40 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (28.7ms)
+Completed 200 OK in 301ms (Views: 256.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 13:44:41 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 172ms (Views: 157.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 13:44:43 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 170ms (Views: 154.9ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-12-19 13:44:45 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"HyRXRAxDRO3cEUFX5Uh+D6FsCT2J6ze23fC2tInvADWRKcPKgGc6VPGVzZyD80plric3FAm0Zvf3M9MYHP9RDA=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 58ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 13:44:46 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 138ms (Views: 124.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-12-19 13:44:48 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (125.9ms)
+Completed 200 OK in 428ms (Views: 405.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-12-19 13:45:02 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OJpyooWYaLED1K+6hSh05ggvnA3mSqD8L9ndwBubqgw3fYa6DLeLLvQdtK7RRFgjM/6TaHi7nDuN2qILxkeDjw==", "user"=>{"Login"=>"dyurrrd@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["Login", "dyurrrd@gmail.com"], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 433ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 13:45:02 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 115ms (Views: 100.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-19 13:45:44 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:19
+  [1m[36mUserparam Load (0.4ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:19
+  [1m[36mPost Create (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("score", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["score", "100"], ["created_at", "2018-12-19 11:45:45.259348"], ["updated_at", "2018-12-19 11:45:45.259348"], ["user_id", 3]]
+  ↳ app/controllers/post_controller.rb:19
+  [1m[35m (167.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_controller.rb:19
+No template found for PostController#create, rendering head :no_content
+Completed 204 No Content in 3664ms (ActiveRecord: 171.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 13:45:51 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (19.8ms)
+Completed 500 Internal Server Error in 86ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (Nil location provided. Can't build URI.):
+    10: <% else %>
+    11:     <% @posts.each do |post| %>
+    12:        <p>Username:
+    13:        	<%=  image_tag post.avatar.url(:thumb)  %>
+    14:        	<b><%= post.userparam.Login %></b><br />
+    15:        <p>Score: <b><%= post.score %></b><br /></p>
+    16:            <% if user_signed_in? %>
+  
+app/views/post/index.html.erb:13:in `block in _app_views_post_index_html_erb__48167587_117313120'
+app/views/post/index.html.erb:11:in `_app_views_post_index_html_erb__48167587_117313120'
+Started GET "/" for 127.0.0.1 at 2018-12-19 13:49:16 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 135ms (Views: 121.5ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/post/12" for 127.0.0.1 at 2018-12-19 13:49:18 +0200
+Processing by PostController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Z91u3U9CGjgRh/zcFomxC+uDA/44+v9BC4l3c+x03mPfh26cJO0Ny8TlRpJlWpM1wXwgRTu0mr/EUj9WNwHSIQ==", "id"=>"12"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:48
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:36
+  [1m[36mPost Destroy (2.3ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 12]]
+  ↳ app/controllers/post_controller.rb:36
+  [1m[35m (140.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_controller.rb:36
+Redirected to http://localhost:3000/
+Completed 302 Found in 232ms (ActiveRecord: 143.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 13:49:18 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 118ms (Views: 103.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 13:49:26 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 122ms (Views: 109.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-19 13:51:07 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 1.1ms)
+
+
+  
+NoMethodError (undefined method `[]=' for nil:NilClass):
+  
+app/controllers/post_controller.rb:16:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 13:52:05 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:19
+  [1m[36mUserparam Load (0.3ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:19
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/post_controller.rb:19
+No template found for PostController#create, rendering head :no_content
+Completed 204 No Content in 3219ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 13:52:12 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 115ms (Views: 101.9ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-19 13:53:16 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:18
+  [1m[36mUserparam Load (0.4ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/post_controller.rb:18
+No template found for PostController#create, rendering head :no_content
+Completed 204 No Content in 3348ms (ActiveRecord: 3.5ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-19 13:53:51 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:17
+Completed 500 Internal Server Error in 59ms (ActiveRecord: 2.6ms)
+
+
+  
+NoMethodError (undefined method `resize_to_fit' for #<AvatarUploader::Uploader110991240:0x000000000cdb76b0>):
+  
+app/controllers/post_controller.rb:17:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 14:10:35 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:18
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:18
+  [1m[36mPost Create (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("score", "avatar", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["score", "100"], ["avatar", "Score.png"], ["created_at", "2018-12-19 12:10:36.703167"], ["updated_at", "2018-12-19 12:10:36.703167"], ["user_id", 3]]
+  ↳ app/controllers/post_controller.rb:18
+  [1m[35m (170.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_controller.rb:18
+No template found for PostController#create, rendering head :no_content
+Completed 204 No Content in 3349ms (ActiveRecord: 174.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 14:11:47 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.1ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 766ms (Views: 752.6ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-12-19 14:11:52 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"kZjL1NSKcR38ZJd6MwXK06ZTPKcIsgy9cAH+PRA4I3opwsuVvyVm7ikGLTRA1ujtjKwfHAv8aUO/2rYYy00vOA=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 130ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 14:11:52 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 140ms (Views: 126.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-12-19 14:11:55 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (15.2ms)
+Completed 200 OK in 173ms (Views: 171.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-12-19 14:12:52 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hvLRTsw7pQr8j0QKtUvjEsjsoQrcY/51xTJZ6xkK+GL/2fSBVCJuqRnS3FSW6Z1ej/smUPXGiKcBkWIpoDK4DA==", "user"=>{"Login"=>"sd", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["Login", "sd"], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 392ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 14:12:52 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (10.7ms)
+Completed 200 OK in 140ms (Views: 126.0ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/post/13" for 127.0.0.1 at 2018-12-19 14:12:55 +0200
+Processing by PostController#destroy as HTML
+  Parameters: {"authenticity_token"=>"8zsR72lRhi0qqtPN4S1oZFVQrQ5PBmWf/dY4P7NldalnuJxihWivvCOvH7Z6daBgnrcP7jj3EJnbufLpCeZURQ==", "id"=>"13"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:48
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:36
+  [1m[36mPost Destroy (1.0ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 13]]
+  ↳ app/controllers/post_controller.rb:36
+  [1m[35m (147.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_controller.rb:36
+Redirected to http://localhost:3000/
+Completed 302 Found in 160ms (ActiveRecord: 149.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 14:12:55 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 130ms (Views: 116.3ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-12-19 14:12:58 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Zy+EbdfjilcX2hpdeEjpdM2CTGRD78Ms15NxjOa+vhzzrAngO9qjxh7f1ibjECFwBmXuhDQetirx/LtaXD2f8A=="}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 21ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 14:12:58 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 123ms (Views: 110.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-19 14:13:02 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"100", "avatar"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.1ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:18
+  [1m[36mUserparam Load (0.1ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:18
+  [1m[36mPost Create (2.1ms)[0m  [1m[32mINSERT INTO "posts" ("score", "avatar", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["score", "100"], ["avatar", "Score.png"], ["created_at", "2018-12-19 12:13:02.143527"], ["updated_at", "2018-12-19 12:13:02.143527"], ["user_id", 3]]
+  ↳ app/controllers/post_controller.rb:18
+  [1m[35m (151.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_controller.rb:18
+No template found for PostController#create, rendering head :no_content
+Completed 204 No Content in 3339ms (ActiveRecord: 154.4ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-12-19 14:13:05 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 154ms (Views: 153.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-12-19 14:13:08 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kuHTXO7tehbai2yS6R2BzwQu4niV2POOA5SEMGnRssbc0QMngupl3gO7ia/MZ+d4Li3MKmhhQBpPY9UCv0E00A==", "user"=>{"Login"=>"dyurrrd@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["Login", "dyurrrd@gmail.com"], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 286ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 14:13:09 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.1ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 117ms (Views: 103.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 21:51:40 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.3ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (55.0ms)
+Completed 200 OK in 744ms (Views: 631.5ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-19 22:25:46 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.4ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:14
+Completed 500 Internal Server Error in 83ms (ActiveRecord: 5.3ms)
+
+
+  
+CarrierWave::FormNotMultipart (You tried to assign a String or a Pathname to an uploader, for security reasons, this is not allowed.
+
+ If this is a file upload, please check that your upload form is multipart encoded.):
+  
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 22:27:39 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:17
+Completed 500 Internal Server Error in 279ms (ActiveRecord: 2.8ms)
+
+
+  
+CarrierWave::FormNotMultipart (You tried to assign a String or a Pathname to an uploader, for security reasons, this is not allowed.
+
+ If this is a file upload, please check that your upload form is multipart encoded.):
+  
+app/controllers/post_controller.rb:17:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 22:27:53 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sddd"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:18
+  [1m[36mUserparam Load (0.3ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:18
+  [1m[36mPost Create (2.2ms)[0m  [1m[32mINSERT INTO "posts" ("score", "avatar", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["score", "150"], ["avatar", "Score.png"], ["created_at", "2018-12-19 20:27:53.275507"], ["updated_at", "2018-12-19 20:27:53.275507"], ["user_id", 3]]
+  ↳ app/controllers/post_controller.rb:18
+  [1m[35m (162.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_controller.rb:18
+No template found for PostController#create, rendering head :no_content
+Completed 204 No Content in 3299ms (ActiveRecord: 167.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 22:28:04 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.1ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  [1m[36mCACHE Userparam Load (0.0ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (32.1ms)
+Completed 200 OK in 146ms (Views: 132.4ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/index" for 127.0.0.1 at 2018-12-19 22:31:10 +0200
+Processing by UserparamController#Find_User as */*
+  Parameters: {"userparam"=>{"Login"=>"sdk", "Password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdk"], ["LIMIT", 1]]
+  ↳ app/controllers/userparam_controller.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/userparam_controller.rb:24
+  [1m[36mUser Create (2.3ms)[0m  [1m[32mINSERT INTO "users" ("Login", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["Login", "sdk"], ["encrypted_password", "$2a$11$cUdvDlDmfvW29OP.8VjGt.AOWVttmV2kUjy6wioTgxnR15jTqInea"], ["created_at", "2018-12-19 20:31:11.314210"], ["updated_at", "2018-12-19 20:31:11.314210"]]
+  ↳ app/controllers/userparam_controller.rb:24
+  [1m[36mUserparam Create (0.2ms)[0m  [1m[32mINSERT INTO "userparams" ("Login", "Password", "score", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["Login", "sdk"], ["Password", "123123"], ["score", 0], ["created_at", "2018-12-19 20:31:11.320195"], ["updated_at", "2018-12-19 20:31:11.320195"], ["user_id", 6]]
+  ↳ app/controllers/userparam_controller.rb:24
+  [1m[35m (162.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/userparam_controller.rb:24
+Completed 200 OK in 366ms (Views: 0.3ms | ActiveRecord: 167.0ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-19 22:31:19 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `userparam' for #<Hash:0x000000000cdcf3f0>):
+  
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 22:33:36 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.1ms)
+
+
+  
+NoMethodError (undefined method `join' for #<Hash:0x000000000d430aa0>):
+  
+app/controllers/post_controller.rb:13:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 22:34:47 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (29.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "User"."id" = ? AND "User"."Login" = ? AND "User"."created_at" = ? AND "User"."updated_at" = ? LIMIT ?[0m  [["id", 6], ["Login", "sdk"], ["created_at", "2018-12-19T20:31:11.314Z"], ["updated_at", "2018-12-19T20:31:11.314Z"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 29.7ms)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: User.id: SELECT  "users".* FROM "users" WHERE "User"."id" = ? AND "User"."Login" = ? AND "User"."created_at" = ? AND "User"."updated_at" = ? LIMIT ?):
+  
+app/controllers/post_controller.rb:13:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 22:35:17 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "user_id"."id" = ? AND "user_id"."Login" = ? AND "user_id"."created_at" = ? AND "user_id"."updated_at" = ? LIMIT ?[0m  [["id", 6], ["Login", "sdk"], ["created_at", "2018-12-19T20:31:11.314Z"], ["updated_at", "2018-12-19T20:31:11.314Z"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 1.0ms)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: user_id.id: SELECT  "users".* FROM "users" WHERE "user_id"."id" = ? AND "user_id"."Login" = ? AND "user_id"."created_at" = ? AND "user_id"."updated_at" = ? LIMIT ?):
+  
+app/controllers/post_controller.rb:13:in `create'
+Started POST "/index" for 127.0.0.1 at 2018-12-19 22:36:03 +0200
+Processing by UserparamController#Find_User as */*
+  Parameters: {"userparam"=>{"Login"=>"sdk", "Password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdk"], ["LIMIT", 1]]
+  ↳ app/controllers/userparam_controller.rb:13
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.1ms)
+
+
+  
+NoMethodError (undefined method `user_id' for #<User:0x000000000d7c4e50>):
+  
+app/controllers/userparam_controller.rb:15:in `Find_User'
+Started POST "/index" for 127.0.0.1 at 2018-12-19 22:36:18 +0200
+Processing by UserparamController#Find_User as */*
+  Parameters: {"userparam"=>{"Login"=>"sdk", "Password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdk"], ["LIMIT", 1]]
+  ↳ app/controllers/userparam_controller.rb:13
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/userparam_controller.rb:16
+Completed 200 OK in 23ms (Views: 0.3ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-19 22:37:38 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.5ms)
+
+
+  
+TypeError (can't cast Hash):
+  
+app/controllers/post_controller.rb:13:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 22:38:06 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+TypeError (can't cast Hash):
+  
+app/controllers/post_controller.rb:13:in `create'
+Started POST "/index" for 127.0.0.1 at 2018-12-19 22:38:10 +0200
+Processing by UserparamController#Find_User as */*
+  Parameters: {"userparam"=>{"Login"=>"sdk", "Password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdk"], ["LIMIT", 1]]
+  ↳ app/controllers/userparam_controller.rb:13
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/userparam_controller.rb:16
+Completed 200 OK in 25ms (Views: 0.3ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-19 22:38:14 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdk"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:15
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:16
+  [1m[36mUserparam Load (0.3ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:16
+  [1m[36mPost Create (2.2ms)[0m  [1m[32mINSERT INTO "posts" ("score", "avatar", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["score", "150"], ["avatar", "Score.png"], ["created_at", "2018-12-19 20:38:14.860569"], ["updated_at", "2018-12-19 20:38:14.860569"], ["user_id", 4]]
+  ↳ app/controllers/post_controller.rb:16
+  [1m[35m (194.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_controller.rb:16
+No template found for PostController#create, rendering head :no_content
+Completed 204 No Content in 3863ms (ActiveRecord: 198.1ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-19 22:40:10 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdk"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 1.2ms)
+
+
+  
+TypeError (no implicit conversion of Symbol into String):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `open'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 22:40:44 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdk"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 1.1ms)
+
+
+  
+TypeError (no implicit conversion of Symbol into String):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `open'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 22:41:46 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdk"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 1.7ms)
+
+
+  
+Errno::ENOENT (No such file or directory @ rb_sysopen - #:avatar):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `open'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 22:42:19 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"'D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png'"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdk"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.3ms)
+
+
+  
+TypeError (no implicit conversion of Symbol into String):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `open'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/index" for 127.0.0.1 at 2018-12-19 22:42:38 +0200
+Processing by UserparamController#Find_User as */*
+  Parameters: {"userparam"=>{"Login"=>"sdkg", "Password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/userparam_controller.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/userparam_controller.rb:24
+  [1m[36mUser Create (2.4ms)[0m  [1m[32mINSERT INTO "users" ("Login", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["Login", "sdkg"], ["encrypted_password", "$2a$11$6DlV9kqLz0OwV1U4SvsIAewBe0pBnxwDQFqaDrmX6uO5CtyTW2XAq"], ["created_at", "2018-12-19 20:42:38.582909"], ["updated_at", "2018-12-19 20:42:38.582909"]]
+  ↳ app/controllers/userparam_controller.rb:24
+  [1m[36mUserparam Create (0.2ms)[0m  [1m[32mINSERT INTO "userparams" ("Login", "Password", "score", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["Login", "sdkg"], ["Password", "123123"], ["score", 0], ["created_at", "2018-12-19 20:42:38.589928"], ["updated_at", "2018-12-19 20:42:38.589928"], ["user_id", 7]]
+  ↳ app/controllers/userparam_controller.rb:24
+  [1m[35m (176.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/userparam_controller.rb:24
+Completed 200 OK in 361ms (Views: 0.4ms | ActiveRecord: 180.9ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-19 22:42:43 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"'D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png'"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.2ms)
+
+
+  
+TypeError (no implicit conversion of Symbol into String):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `open'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 22:44:15 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"'D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png'"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.5ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:15
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:16
+  [1m[36mUserparam Load (0.3ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:16
+  [1m[36mPost Create (2.2ms)[0m  [1m[32mINSERT INTO "posts" ("score", "avatar", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["score", "150"], ["avatar", "Score.png"], ["created_at", "2018-12-19 20:44:15.415477"], ["updated_at", "2018-12-19 20:44:15.415477"], ["user_id", 5]]
+  ↳ app/controllers/post_controller.rb:16
+  [1m[35m (155.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_controller.rb:16
+No template found for PostController#create, rendering head :no_content
+Completed 204 No Content in 3725ms (ActiveRecord: 161.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 22:44:26 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  [1m[36mCACHE Userparam Load (0.0ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  [1m[36mUserparam Load (0.1ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (25.2ms)
+Completed 200 OK in 145ms (Views: 127.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 22:44:28 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.1ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  [1m[36mCACHE Userparam Load (0.0ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  [1m[36mUserparam Load (0.1ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  [1m[36mUserparam Load (0.1ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 128ms (Views: 113.9ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/post/15" for 127.0.0.1 at 2018-12-19 22:44:33 +0200
+Processing by PostController#destroy as HTML
+  Parameters: {"authenticity_token"=>"wKYQ4QpKkKiYtKWKVuBzGrGm2C/EJ/em3MrQsXDjciUSaiO4xYiaYFKgw0I8xIe9sgHdFivG0EsF5T0tEfHXkA==", "id"=>"15"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:46
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:34
+  [1m[36mPost Destroy (2.1ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 15]]
+  ↳ app/controllers/post_controller.rb:34
+  [1m[35m (159.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_controller.rb:34
+Redirected to http://localhost:3000/
+Completed 302 Found in 198ms (ActiveRecord: 162.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 22:44:33 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.1ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (22.2ms)
+Completed 200 OK in 134ms (Views: 118.3ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/post/14" for 127.0.0.1 at 2018-12-19 22:44:35 +0200
+Processing by PostController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Kg0jKR2K3szO5orUGuHtP0NoXSHqTWWoN8zJZIocEGL4wRBw0kjUBATy7BxwxRmYQM9YGAWsQkXu4yT46w611w==", "id"=>"14"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:46
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:34
+  [1m[36mPost Destroy (2.2ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 14]]
+  ↳ app/controllers/post_controller.rb:34
+  [1m[35m (165.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_controller.rb:34
+Redirected to http://localhost:3000/
+Completed 302 Found in 181ms (ActiveRecord: 167.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 22:44:35 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.1ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 128ms (Views: 114.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-19 22:45:20 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.3ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (39.0ms)
+Completed 500 Internal Server Error in 111ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `user_id' for #<User:0x000000000e4ffd40>):
+    14:        	<b><%= post.userparam.Login %></b><br />
+    15:        <p>Score: <b><%= post.score %></b><br /></p>
+    16:            <% if user_signed_in? %>
+    17:               <% if post.user_id == current_user.user_id %>
+    18:            <% end %>
+    19:        <p><%= link_to "Delete", post_path(post.id), method: :delete %></p>
+    20:               <% end %>
+  
+app/views/post/index.html.erb:17:in `block in _app_views_post_index_html_erb__215129998_120245360'
+app/views/post/index.html.erb:11:in `_app_views_post_index_html_erb__215129998_120245360'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 22:47:17 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"'D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png'"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.1ms)
+
+
+  
+TypeError (no implicit conversion of Symbol into String):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `open'
+app/controllers/post_controller.rb:14:in `create'
+Started GET "/" for 127.0.0.1 at 2018-12-19 22:48:33 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (90.4ms)
+Completed 200 OK in 201ms (Views: 185.6ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-19 22:54:32 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"'D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png'"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.2ms)
+
+
+  
+Errno::ENOENT (No such file or directory @ rb_sysopen - #{:avatar}):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `open'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 22:58:30 +0200
+  
+SyntaxError (D:/RoR2/IndPrt/IndPr/app/controllers/post_controller.rb:14: syntax error, unexpected tSTRING_BEG, expecting keyword_do or '{' or '('
+atar] = File.open('#{':avatar'}')
+                              ^
+D:/RoR2/IndPrt/IndPr/app/controllers/post_controller.rb:14: syntax error, unexpected ')', expecting keyword_end
+r] = File.open('#{':avatar'}')
+                              ^):
+  
+app/controllers/post_controller.rb:14: syntax error, unexpected tSTRING_BEG, expecting keyword_do or '{' or '('
+app/controllers/post_controller.rb:14: syntax error, unexpected ')', expecting keyword_end
+Started POST "/create" for 127.0.0.1 at 2018-12-19 22:59:41 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.2ms)
+
+
+  
+Errno::ENOENT (No such file or directory @ rb_sysopen - :avatar):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `open'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 23:03:59 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"'D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png'"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.2ms)
+
+
+  
+Errno::ENOENT (No such file or directory @ rb_sysopen - avatar):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `open'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 23:06:11 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"'D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png'"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.7ms)
+
+
+  
+Errno::ENOENT (No such file or directory @ rb_sysopen - :avatar):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `open'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 23:06:18 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.2ms)
+
+
+  
+Errno::ENOENT (No such file or directory @ rb_sysopen - :avatar):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `open'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 23:08:41 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"'D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png'"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 1.1ms)
+
+
+  
+TypeError (no implicit conversion of Symbol into String):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `open'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-19 23:11:14 +0200
+  
+SyntaxError (D:/RoR2/IndPrt/IndPr/app/controllers/post_controller.rb:14: syntax error, unexpected tSTRING_BEG, expecting keyword_do or '{' or '('
+vatar] = File.open("'":avatar"'")
+                              ^
+D:/RoR2/IndPrt/IndPr/app/controllers/post_controller.rb:14: syntax error, unexpected ')', expecting keyword_end
+ar] = File.open("'":avatar"'")
+                              ^):
+  
+app/controllers/post_controller.rb:14: syntax error, unexpected tSTRING_BEG, expecting keyword_do or '{' or '('
+app/controllers/post_controller.rb:14: syntax error, unexpected ')', expecting keyword_end
+Started POST "/create" for 127.0.0.1 at 2018-12-19 23:17:56 +0200
+  
+SyntaxError (D:/RoR2/IndPrt/IndPr/app/controllers/post_controller.rb:14: syntax error, unexpected tSTRING_BEG, expecting ')'
+atar] = File.open("'"+:avatar"'")
+                              ^
+D:/RoR2/IndPrt/IndPr/app/controllers/post_controller.rb:14: syntax error, unexpected ')', expecting keyword_end
+r] = File.open("'"+:avatar"'")
+                              ^):
+  
+app/controllers/post_controller.rb:14: syntax error, unexpected tSTRING_BEG, expecting ')'
+app/controllers/post_controller.rb:14: syntax error, unexpected ')', expecting keyword_end
+Started POST "/create" for 127.0.0.1 at 2018-12-19 23:21:08 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 1.2ms)
+
+
+  
+TypeError (no implicit conversion of Symbol into String):
+  
+app/controllers/post_controller.rb:14:in `+'
+app/controllers/post_controller.rb:14:in `create'
+Started GET "/" for 127.0.0.1 at 2018-12-20 14:58:04 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.3ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (1646.6ms)
+Completed 200 OK in 2062ms (Views: 1993.7ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-20 14:59:17 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (69.6ms)
+Completed 200 OK in 288ms (Views: 235.2ms | ActiveRecord: 3.4ms)
+
+
+Started DELETE "/post/16" for 127.0.0.1 at 2018-12-20 14:59:23 +0200
+Processing by PostController#destroy as HTML
+  Parameters: {"authenticity_token"=>"N97eGlaxngf4wPInJ6RIRY6zRSYOFlovcAtuNKhxfr/lEu1DmXOUzzLUlO9NgLzijRRAH+H3fcKpJIOoyWPbCg==", "id"=>"16"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:46
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:34
+  [1m[36mPost Destroy (35.2ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 16]]
+  ↳ app/controllers/post_controller.rb:34
+  [1m[35m (215.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_controller.rb:34
+Redirected to http://localhost:3000/
+Completed 302 Found in 320ms (ActiveRecord: 251.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-20 14:59:24 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.1ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 144ms (Views: 130.8ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/post/17" for 127.0.0.1 at 2018-12-20 14:59:26 +0200
+Processing by PostController#destroy as HTML
+  Parameters: {"authenticity_token"=>"LmHRq41qiVksV5bG6bqXqvMDUMo4V3oX7va+n+xU6M/8reLyQqiDkeZD8A6DnmMN8KRV89e2Xfo32VMDjUZNeg==", "id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:46
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:34
+  [1m[36mPost Destroy (2.1ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 17]]
+  ↳ app/controllers/post_controller.rb:34
+  [1m[35m (157.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_controller.rb:34
+Redirected to http://localhost:3000/
+Completed 302 Found in 174ms (ActiveRecord: 159.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-20 14:59:27 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 138ms (Views: 124.5ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-12-20 14:59:28 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Z6csQbTR3IOTU8ZTx+vrUdhaKRMSTtQ/oNA4ujin8Ki1ax8YexPWS1lHoJutzx/22/0sKv2v89J5/9UmWbVVHQ=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 23ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-20 14:59:29 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 128ms (Views: 114.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-12-20 14:59:30 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (22.4ms)
+Completed 200 OK in 236ms (Views: 234.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-12-20 14:59:33 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"k0Lmc+5f/E85rAGYzbVYyxw+/jzuiqO6tn+6orgAtFF3emHHYY02Wns84issyTsTTRNfg6ov7z6n720NQCv4ww==", "user"=>{"Login"=>"dyurrrd@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["Login", "dyurrrd@gmail.com"], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 294ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-20 14:59:34 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 133ms (Views: 119.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-20 15:00:43 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.3ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:15
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:16
+  [1m[36mUserparam Load (0.3ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:16
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("score", "avatar", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["score", "150"], ["avatar", "Score.png"], ["created_at", "2018-12-20 13:00:43.538001"], ["updated_at", "2018-12-20 13:00:43.538001"], ["user_id", 5]]
+  ↳ app/controllers/post_controller.rb:16
+  [1m[35m (189.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_controller.rb:16
+No template found for PostController#create, rendering head :no_content
+Completed 204 No Content in 3549ms (ActiveRecord: 193.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-20 15:00:48 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 128ms (Views: 114.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-20 15:01:12 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (18.7ms)
+Completed 200 OK in 137ms (Views: 123.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-20 15:01:26 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 121ms (Views: 106.8ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/create" for 127.0.0.1 at 2018-12-20 15:03:06 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 153ms (ActiveRecord: 1.3ms)
+
+
+  
+TypeError (no implicit conversion of Symbol into String):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `open'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-20 15:03:15 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 1.3ms)
+
+
+  
+TypeError (no implicit conversion of Symbol into String):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `open'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-20 15:03:31 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.1ms)
+
+
+  
+TypeError (no implicit conversion of Symbol into String):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `open'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-20 15:03:40 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.1ms)
+
+
+  
+NoMethodError (undefined method `parameterize' for :avatar:Symbol):
+  
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-20 15:03:53 +0200
+  
+SyntaxError (D:/RoR2/IndPrt/IndPr/app/controllers/post_controller.rb:14: syntax error, unexpected '.'
+[:avatar] = File.open(avatar:.parameterize.to_sym)
+                              ^
+D:/RoR2/IndPrt/IndPr/app/controllers/post_controller.rb:14: syntax error, unexpected ')', expecting keyword_end
+n(avatar:.parameterize.to_sym)
+                              ^):
+  
+app/controllers/post_controller.rb:14: syntax error, unexpected '.'
+app/controllers/post_controller.rb:14: syntax error, unexpected ')', expecting keyword_end
+Started POST "/create" for 127.0.0.1 at 2018-12-20 15:04:04 +0200
+  
+SyntaxError (D:/RoR2/IndPrt/IndPr/app/controllers/post_controller.rb:14: syntax error, unexpected '.'
+[:avatar] = File.open(avatar:.to_sym)
+                              ^):
+  
+app/controllers/post_controller.rb:14: syntax error, unexpected '.'
+Started POST "/create" for 127.0.0.1 at 2018-12-20 15:04:14 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.4ms)
+
+
+  
+TypeError (no implicit conversion of Symbol into String):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `open'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-20 15:05:18 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 1.3ms)
+
+
+  
+TypeError (no implicit conversion of Symbol into String):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `open'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-20 15:05:41 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 1.1ms)
+
+
+  
+TypeError (no implicit conversion of Symbol into String):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `open'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-20 15:06:16 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"'D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png'"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.2ms)
+
+
+  
+TypeError (no implicit conversion of Symbol into String):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `open'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-20 15:07:17 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"'D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png'"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 1.1ms)
+
+
+  
+TypeError (no implicit conversion of Symbol into String):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `open'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-20 15:10:28 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"'D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png'"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1..3)):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `new'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-20 15:10:37 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"'D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png'"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 1.5ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1..3)):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `open'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-20 15:11:47 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"'D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png'"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 1.2ms)
+
+
+  
+TypeError (no implicit conversion of Symbol into String):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `new'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-20 15:12:09 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms)
+
+
+  
+TypeError (no implicit conversion of Symbol into String):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `new'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-20 15:13:18 +0200
+  
+SyntaxError (D:/RoR2/IndPrt/IndPr/app/controllers/post_controller.rb:14: syntax error, unexpected ')'
+    @src = File.new(avatar:)
+                            ^):
+  
+app/controllers/post_controller.rb:14: syntax error, unexpected ')'
+Started POST "/create" for 127.0.0.1 at 2018-12-20 15:13:46 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 1.2ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1..3)):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `new'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-20 15:14:07 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 1.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1..3)):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `new'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-20 15:14:15 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 1.4ms)
+
+
+  
+Errno::EINVAL (Invalid argument @ rb_sysopen - 'D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png'):
+  
+app/controllers/post_controller.rb:14:in `initialize'
+app/controllers/post_controller.rb:14:in `open'
+app/controllers/post_controller.rb:14:in `create'
+Started POST "/create" for 127.0.0.1 at 2018-12-20 15:14:32 +0200
+Processing by PostController#create as */*
+  Parameters: {"post"=>{"score"=>"150", "avatar"=>"D:/RoR2/IndPrt/IndPr/public/uploads/tmp/1545183309-6048-0001-9863/Score.png"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:13
+  [1m[36mUserparam Load (0.3ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:15
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:16
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:16
+  [1m[36mPost Create (2.0ms)[0m  [1m[32mINSERT INTO "posts" ("score", "avatar", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["score", "150"], ["avatar", "Score.png"], ["created_at", "2018-12-20 13:14:32.366252"], ["updated_at", "2018-12-20 13:14:32.366252"], ["user_id", 5]]
+  ↳ app/controllers/post_controller.rb:16
+  [1m[35m (185.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_controller.rb:16
+No template found for PostController#create, rendering head :no_content
+Completed 204 No Content in 3404ms (ActiveRecord: 192.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-20 15:14:53 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  [1m[36mCACHE Userparam Load (0.0ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 141ms (Views: 127.0ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-12-20 15:14:58 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"zSZwow1iOZIKlq9mg+oJK0oACgsOVp2aEi+/h17cwqtIP9MC5Nlthmxtj6fDdmPf4pBt0kuWq99Obc5Q95m/WQ=="}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-20 15:14:59 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.1ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  [1m[36mCACHE Userparam Load (0.0ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 119ms (Views: 106.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-12-20 15:15:00 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 203ms (Views: 201.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-12-20 15:15:09 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BRyCHh2BnCEFpJdpL2jKqDjEfc4mLgYV4/PMm7B4f7/R27mjurC3Re0U4GEj/vatY0yTgD3nruZ4vcCATp9KrA==", "user"=>{"Login"=>"sdkg", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 275ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-20 15:15:09 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  [1m[36mCACHE Userparam Load (0.0ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 132ms (Views: 118.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-20 15:15:31 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  [1m[36mCACHE Userparam Load (0.0ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (25.2ms)
+Completed 200 OK in 146ms (Views: 131.9ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/post/18" for 127.0.0.1 at 2018-12-20 15:15:35 +0200
+Processing by PostController#destroy as HTML
+  Parameters: {"authenticity_token"=>"iJjowrvR3+hzAFpsTESY5k5LJktTAzC7rD06rnbrrINZQr0HpdAdxpbah1L0JivuEmwOSE41/Ntdui6LYQETJQ==", "id"=>"18"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:45
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:33
+  [1m[36mPost Destroy (2.4ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 18]]
+  ↳ app/controllers/post_controller.rb:33
+  [1m[35m (148.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_controller.rb:33
+Redirected to http://localhost:3000/
+Completed 302 Found in 162ms (ActiveRecord: 151.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-20 15:15:35 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.1ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 145ms (Views: 131.5ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-12-20 15:15:36 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ftoXAylm089cwOp1tc0KtW+idyZNkHx4zUsUxLF8vJKvAELGN2cR4bkaN0sNr7m9M4VfJVCmsBg8zADhppYDNA=="}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 12ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-20 15:15:36 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (19.7ms)
+Completed 200 OK in 165ms (Views: 151.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-12-20 15:15:38 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 166ms (Views: 164.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-12-20 15:15:39 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0xQjc7Mdl0IvRcDaqIQDTCln0GAZQ1HX8EcUDPS1gMmyjRnj0cNmU66dWNAlJH4OuKG5Jw7m8hYgnbOzqwpt0A==", "user"=>{"Login"=>"dyurrrd@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["Login", "dyurrrd@gmail.com"], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 276ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-20 15:15:39 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 117ms (Views: 103.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-20 19:10:50 +0200
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by PostController#index as HTML
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 0.0ms)
+
+
+  
+LoadError (cannot load such file -- mini_magick (You may need to install the mini_magick gem)):
+  
+app/uploaders/avatar_uploader.rb:4:in `include'
+app/uploaders/avatar_uploader.rb:4:in `<class:AvatarUploader>'
+app/uploaders/avatar_uploader.rb:1:in `<top (required)>'
+app/models/post.rb:2:in `<class:Post>'
+app/models/post.rb:1:in `<top (required)>'
+app/controllers/post_controller.rb:5:in `index'
+Started GET "/" for 127.0.0.1 at 2018-12-20 19:11:15 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (155.1ms)
+Completed 200 OK in 1159ms (Views: 1083.9ms | ActiveRecord: 3.7ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-12-20 19:11:20 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ngxPzfcRJSib67qWN7RCIpOwOwf1DgaIDaDyj1O82WJkkpUidi1CGZBCf5M0W4iWaoXTCAEpSsHnHVCk1n0fDQ=="}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 157ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-20 19:11:21 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.2ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 124ms (Views: 110.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-12-20 19:11:22 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (208.9ms)
+Completed 200 OK in 763ms (Views: 394.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-12-20 19:11:25 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (92.9ms)
+Completed 200 OK in 300ms (Views: 298.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-12-20 19:11:30 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 162ms (Views: 160.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-12-20 19:11:35 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Lv7wiqtFJl3H5mukiHm0EDIqD1bP6E8Cgo+LFNWpiyBfzCBQ7M4jZ70AfyRUq8nqj9BJmXfGx7wQ5xSzuuEiKQ==", "user"=>{"Login"=>"sdkg", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Login" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 398ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-20 19:11:35 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  [1m[36mUserparam Load (0.1ms)[0m  [1m[34mSELECT  "userparams".* FROM "userparams" WHERE "userparams"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:14
+  Rendered post/index.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 123ms (Views: 109.1ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/post/19" for 127.0.0.1 at 2018-12-20 19:11:42 +0200
+Processing by PostController#destroy as HTML
+  Parameters: {"authenticity_token"=>"XDGn7OLBeg3jgzwTRwrxYbWS8BEzqCRQPEoMvGZd5Ht2Dh9cew6HSangAJ+RFzu6DLpe1GNBEl9Ert2Zox4Odg==", "id"=>"19"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/post_controller.rb:45
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_controller.rb:33
+  [1m[36mPost Destroy (2.2ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 19]]
+  ↳ app/controllers/post_controller.rb:33
+  [1m[35m (147.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_controller.rb:33
+Redirected to http://localhost:3000/
+Completed 302 Found in 163ms (ActiveRecord: 149.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-20 19:11:42 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/post/index.html.erb:1
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 126ms (Views: 112.0ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-12-20 19:11:43 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"IcOoc8tMIQgU5E7mpcn9CRUJ1nSB6uBg8AQSH9iI2HgL/BDDUoPcTF6Hcmpz1DfSrCF4sdED1m+I4MM6HcsydQ=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-20 19:11:44 +0200
+Processing by PostController#index as HTML
+  Rendering post/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/post/index.html.erb:8
+  Rendered post/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 117ms (Views: 103.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-12-20 19:11:44 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 154ms (Views: 153.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-12-20 19:11:46 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (15.4ms)
+Completed 200 OK in 170ms (Views: 168.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-12-20 19:12:36 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (15.7ms)
+Completed 200 OK in 172ms (Views: 170.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-12-20 19:12:44 +0200
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yJt6fj2Dby7AUhcwqi9g2VMuByrptcNRZAEVyCk7+ncbsKT6sXvqlEAG01OxAXm/cinPFVsErVYhUFNVR2btiQ==", "user"=>{"Login"=>"sdkg", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("Login", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["Login", "sdkg"], ["encrypted_password", "$2a$11$b8EN9nyITbuxsALW71aCQOMiGWQlJlp2ZgUWvQclR9UAF0PWBEcuq"], ["created_at", "2018-12-20 17:12:44.780432"], ["updated_at", "2018-12-20 17:12:44.780432"]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 159ms (ActiveRecord: 0.9ms)
+
+
+  
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: UNIQUE constraint failed: users.Login: INSERT INTO "users" ("Login", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)):
+  
+sqlite3-1.3.13-x64 (mingw32) lib/sqlite3/statement.rb:108:in `step'
+sqlite3-1.3.13-x64 (mingw32) lib/sqlite3/statement.rb:108:in `block in each'
+sqlite3-1.3.13-x64 (mingw32) lib/sqlite3/statement.rb:107:in `loop'
+sqlite3-1.3.13-x64 (mingw32) lib/sqlite3/statement.rb:107:in `each'
+activerecord (5.2.2) lib/active_record/connection_adapters/sqlite3_adapter.rb:222:in `to_a'
+activerecord (5.2.2) lib/active_record/connection_adapters/sqlite3_adapter.rb:222:in `block (2 levels) in exec_query'
+activesupport (5.2.2) lib/active_support/dependencies/interlock.rb:48:in `block in permit_concurrent_loads'
+activesupport (5.2.2) lib/active_support/concurrency/share_lock.rb:187:in `yield_shares'
+activesupport (5.2.2) lib/active_support/dependencies/interlock.rb:47:in `permit_concurrent_loads'
+activerecord (5.2.2) lib/active_record/connection_adapters/sqlite3_adapter.rb:213:in `block in exec_query'
+activerecord (5.2.2) lib/active_record/connection_adapters/abstract_adapter.rb:579:in `block (2 levels) in log'
+D:/Programms/Ruby24-x64/lib/ruby/2.4.0/monitor.rb:214:in `mon_synchronize'
+activerecord (5.2.2) lib/active_record/connection_adapters/abstract_adapter.rb:578:in `block in log'
+activesupport (5.2.2) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activerecord (5.2.2) lib/active_record/connection_adapters/abstract_adapter.rb:569:in `log'
+activerecord (5.2.2) lib/active_record/connection_adapters/sqlite3_adapter.rb:212:in `exec_query'
+activerecord (5.2.2) lib/active_record/connection_adapters/abstract/database_statements.rb:122:in `exec_insert'
+activerecord (5.2.2) lib/active_record/connection_adapters/abstract/database_statements.rb:154:in `insert'
+activerecord (5.2.2) lib/active_record/connection_adapters/abstract/query_cache.rb:21:in `insert'
+activerecord (5.2.2) lib/active_record/persistence.rb:185:in `_insert_record'
+activerecord (5.2.2) lib/active_record/persistence.rb:732:in `_create_record'
+activerecord (5.2.2) lib/active_record/counter_cache.rb:184:in `_create_record'
+activerecord (5.2.2) lib/active_record/locking/optimistic.rb:70:in `_create_record'
+activerecord (5.2.2) lib/active_record/attribute_methods/dirty.rb:140:in `_create_record'
+activerecord (5.2.2) lib/active_record/callbacks.rb:346:in `block in _create_record'
+activesupport (5.2.2) lib/active_support/callbacks.rb:132:in `run_callbacks'
+activesupport (5.2.2) lib/active_support/callbacks.rb:816:in `_run_create_callbacks'
+activerecord (5.2.2) lib/active_record/callbacks.rb:346:in `_create_record'
+activerecord (5.2.2) lib/active_record/timestamp.rb:102:in `_create_record'
+activerecord (5.2.2) lib/active_record/persistence.rb:703:in `create_or_update'
+activerecord (5.2.2) lib/active_record/callbacks.rb:342:in `block in create_or_update'
+activesupport (5.2.2) lib/active_support/callbacks.rb:98:in `run_callbacks'
+activesupport (5.2.2) lib/active_support/callbacks.rb:816:in `_run_save_callbacks'
+activerecord (5.2.2) lib/active_record/callbacks.rb:342:in `create_or_update'
+activerecord (5.2.2) lib/active_record/persistence.rb:273:in `save'
+activerecord (5.2.2) lib/active_record/validations.rb:46:in `save'
+activerecord (5.2.2) lib/active_record/transactions.rb:310:in `block (2 levels) in save'
+activerecord (5.2.2) lib/active_record/transactions.rb:387:in `block in with_transaction_returning_status'
+activerecord (5.2.2) lib/active_record/connection_adapters/abstract/database_statements.rb:259:in `block in transaction'
+activerecord (5.2.2) lib/active_record/connection_adapters/abstract/transaction.rb:239:in `block in within_new_transaction'
+D:/Programms/Ruby24-x64/lib/ruby/2.4.0/monitor.rb:214:in `mon_synchronize'
+activerecord (5.2.2) lib/active_record/connection_adapters/abstract/transaction.rb:236:in `within_new_transaction'
+activerecord (5.2.2) lib/active_record/connection_adapters/abstract/database_statements.rb:259:in `transaction'
+activerecord (5.2.2) lib/active_record/transactions.rb:212:in `transaction'
+activerecord (5.2.2) lib/active_record/transactions.rb:385:in `with_transaction_returning_status'
+activerecord (5.2.2) lib/active_record/transactions.rb:310:in `block in save'
+activerecord (5.2.2) lib/active_record/transactions.rb:325:in `rollback_active_record_state!'
+activerecord (5.2.2) lib/active_record/transactions.rb:309:in `save'
+activerecord (5.2.2) lib/active_record/suppressor.rb:44:in `save'
+devise (4.5.0) app/controllers/devise/registrations_controller.rb:19:in `create'
+actionpack (5.2.2) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (5.2.2) lib/abstract_controller/base.rb:194:in `process_action'
+actionpack (5.2.2) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.2.2) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (5.2.2) lib/active_support/callbacks.rb:132:in `run_callbacks'
+actionpack (5.2.2) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.2) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.2) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.2) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.2) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.2) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.2) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.2) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.2) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.2) lib/abstract_controller/base.rb:134:in `process'
+actionview (5.2.2) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.2) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.2) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.2) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.2) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.2) lib/action_dispatch/routing/mapper.rb:18:in `block in <class:Constraints>'
+actionpack (5.2.2) lib/action_dispatch/routing/mapper.rb:48:in `serve'
+actionpack (5.2.2) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.2) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.2) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.2) lib/action_dispatch/routing/route_set.rb:840:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.0.6) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.6) lib/rack/etag.rb:25:in `call'
+rack (2.0.6) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.6) lib/rack/head.rb:12:in `call'
+actionpack (5.2.2) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.6) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.6) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.2) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.2) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-12-20 19:18:09 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (16.4ms)
+Completed 200 OK in 187ms (Views: 178.6ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-12-20 19:18:15 +0200
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kwgqv1FHkWncGL/wxxQeh0O5DUAHMAgo0AFJsEI4lHFAI/Q73b8U01xMe5PcOgfhYr7Ff7WBZi+VUA8tLGWDjw==", "user"=>{"Login"=>"sdkg", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (15.7ms)
+Completed 200 OK in 460ms (Views: 168.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-12-20 19:18:24 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started POST "/users" for 127.0.0.1 at 2018-12-20 19:18:29 +0200
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EnnezmOrF2k3yHVMeznwr1W5p9z+PeAggAXcTVM4g0XBUgBK71OS07ecsS9gF+nJdL5v40yMjifFVJrQPWWUuw==", "user"=>{"Login"=>"sdkg", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."Login" = ? LIMIT ?[0m  [["Login", "sdkg"], ["LIMIT", 1]]
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ D:/Programms/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 314ms (Views: 176.6ms | ActiveRecord: 0.4ms)
+
+
